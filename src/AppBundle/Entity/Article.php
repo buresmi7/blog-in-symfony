@@ -165,5 +165,15 @@ class Article
     {
         return $this->enabled;
     }
+
+    public function enable()
+    {
+        $this->enabled = true;
+    }
+
+    public function disable()
+    {
+        $this->enabled = false;
+    }
 }
 

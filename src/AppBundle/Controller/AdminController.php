@@ -97,6 +97,28 @@ class AdminController extends Controller
         ));
     }
 
+    /**
+     * @Route("/admin/article/{id}/enable", name="adminArticleEnable")
+     */
+    public function articleEnableAction(Request $request, Article $article)
+    {
+        $article->enable();
+        $em = $this->getDoctrine()->getManager();
+        $em->flush();
+        return $this->redirectToRoute('adminArticleList');
+    }
+
+    /**
+     * @Route("/admin/article/{id}/disable", name="adminArticleDisable")
+     */
+    public function articleDisableAction(Request $request, Article $article)
+    {
+        $article->disable();
+        $em = $this->getDoctrine()->getManager();
+        $em->flush();
+        return $this->redirectToRoute('adminArticleList');
+    }
+
     private function createArticleForm($article) {
         return $this->createFormBuilder()
             ->add('title', TextType::class, ['data' => $article ? $article->getTitle() : ''])

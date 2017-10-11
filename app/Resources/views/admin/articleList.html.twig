@@ -5,10 +5,11 @@
     <table>
     <thead>
         <tr>
-            <th>Id</th>
-            <th>Title</th>
-            <th>Created</th>
-            <th>Enabled</th>
+            <th>id</th>
+            <th>title</th>
+            <th>created</th>
+            <th>enabled</th>
+            <th>action</th>
         </tr>
     </thead>
     <tbody>
@@ -18,6 +19,15 @@
             <td>{{ article.title }}</td>
             <td>{{ article.date|date('M j, Y') }}</td>
             <td>{{ article.enabled ? 'true' : 'false' }}</td>
+            <td>
+                <a href={{ path('adminArticleEdit', {'id': article.id}) }}>edit</a>
+                |
+                {% if article.enabled %}
+                <a href={{ path('adminArticleDisable', {'id': article.id}) }}>disable</a>
+                {% else %}
+                <a href={{ path('adminArticleEnable', {'id': article.id}) }}>enable</a>
+                {% endif %}
+            </td>
         </tr>
     {% endfor %}
     </tbody>
