@@ -12,16 +12,15 @@ use AppBundle\Entity\Article;
  */
 class ArticleRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function createDisabled(
-        int $id,
+    public function addDisabled(
         string $title,
         string $text,
         string $tags,
         string $url
     ): Article {
-        $date = new DateTimeImmutable('now');
+        $date = new \DateTimeImmutable('now');
         $enabled = false;
-        $article = new Article($id, $title, $text, $date, $tags, $url, $enabled);
+        $article = new Article($title, $text, $date, $tags, $url, $enabled);
         $this->_em->persist($article);
         return $article;
     }

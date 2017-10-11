@@ -65,7 +65,6 @@ class Article
 
 
     public function __construct(
-        int $id,
         string $title,
         string $text,
         \DateTimeImmutable $date,
@@ -73,7 +72,6 @@ class Article
         string $url,
         bool $enabled
     ) {
-        $this->id = $id;
         $this->title = $title;
         $this->text = $text;
         $this->date = $date;
@@ -102,6 +100,10 @@ class Article
         return $this->title;
     }
 
+    public function setTitle($title) {
+        $this->title = $title;
+    }
+
     /**
      * Get text
      *
@@ -110,6 +112,10 @@ class Article
     public function getText()
     {
         return $this->text;
+    }
+
+    public function setText($text) {
+        $this->text = $text;
     }
 
     /**
@@ -132,6 +138,10 @@ class Article
         return $this->tags;
     }
 
+    public function setTags($tags) {
+        $this->tags = $tags;
+    }
+
     /**
      * Get url
      *
@@ -140,6 +150,10 @@ class Article
     public function getUrl()
     {
         return $this->url;
+    }
+
+    public function setUrl($url) {
+        $this->url = $url;
     }
 
     /**
