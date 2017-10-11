@@ -1,0 +1,25 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block body %}
+    <h2>article list</h2>
+    <table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Created</th>
+            <th>Enabled</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for article in articleList %}
+        <tr>
+            <td>{{ article.id }}</td>
+            <td>{{ article.title }}</td>
+            <td>{{ article.date|date('M j, Y') }}</td>
+            <td>{{ article.enabled ? 'true' : 'false' }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+{% endblock %}
